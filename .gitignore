@@ -5,7 +5,6 @@ out
 .cache
 .idea
 .vs
-.vscode
 
 # Prerequisites
 *.d
@@ -39,3 +38,4 @@ out
 *.exe
 *.out
 *.app
+imgui.ini

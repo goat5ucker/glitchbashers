@@ -1,9 +1,13 @@
 cmake_minimum_required(VERSION 3.28)
 project(CMakeSFMLProject LANGUAGES CXX)
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ../output/)
-
 include(FetchContent)
+
+set(CMAKE_BINARY_DIR ../sauce/)
+set(CMAKE_SOURCE_DIR ../sauce/)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ../output/)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 FetchContent_Declare(SFML
     GIT_REPOSITORY https://github.com/SFML/SFML
     GIT_TAG 3.0.1
@@ -31,7 +35,7 @@ FetchContent_Declare(ImGui-SFML
 FetchContent_MakeAvailable(ImGui-SFML)
 
 add_executable(glitchbashers sauce/main.cpp)
+
 target_compile_features(glitchbashers PRIVATE cxx_std_17)
 target_link_libraries(glitchbashers PRIVATE SFML::Graphics ImGui-SFML::ImGui-SFML)
-
-
+target_include_directories(glitchbashers PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/sauce)
